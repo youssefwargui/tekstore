@@ -1,8 +1,10 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
+
 import AppRoutes from "../src/routes/AppRoutes"
 import axios from "axios";
 import { useEffect , useState } from "react";
+
 const App = () => {
 const [data, setdata] = useState([]);
 
@@ -21,10 +23,20 @@ const [data, setdata] = useState([]);
     fetchdata();
   }, []);
 
+  const search = (inputvalue) => {
+    let dataf = data.filter((el) => {
+      return el.title.includes(inputvalue) || el.content.includes(inputvalue);
+    });
+    console.log(dataf, "filtreddata");
+
+    setfiltreddata(dataf);
+  };
+
+
   return (
     <div className="App">
-      <Navbar />
-      <AppRoutes data={data}/>
+      <Navbar search={search} />
+      <AppRoutes data={data} />
       
     </div>
   );
