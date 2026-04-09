@@ -8,7 +8,8 @@ const Navbar = () => {
         TEK STORE
       </NavLink>
       <Search />
-      <NavLink to="" className="add">
+      <NavLink
+       to="/AddProduct" className="add">
         Add Product
       </NavLink>
     </div>

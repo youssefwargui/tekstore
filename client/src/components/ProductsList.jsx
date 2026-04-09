@@ -1,9 +1,11 @@
 import deleteicon from "../assets/deleteicon.png";
 import edit from "../assets/edit.png";
-const ProductsList = () => {
+const ProductsList = (props) => {
   return (
     <div className="products-list">
-      <div className="product-card">
+      {props.data.map((el)=>{
+        return(
+<div className="product-card">
         <div className="product-card-buttons">
           <img src={edit} className="icon-btn edit-btn" title="Edit" />
           <img
@@ -12,15 +14,18 @@ const ProductsList = () => {
             title="Delete"
           />
         </div>
-        <img />
+        <img src={el.imageUrl}/>
         <div className="card-body">
-          <span className="card-item-cat"></span>
-          <h2></h2>
-          <p></p>
-          <h5 className="price">$</h5>
+          <span className="card-item-cat">{el.categories}</span>
+          <h2>{el.name}</h2>
+          <p>{el.description}</p>
+          <h5 className="price">${el.price}</h5>
           <button className="add-cart-btn">Add to Cart</button>
         </div>
       </div>
+        )
+      })}
+      
     </div>
   );
 };
